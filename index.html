@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bartoszbrowser</title>
+<style>
+  body {
+    background-color: #333;
+    color: white; /* Kolor tekstu na tle #333 */
+    font-family: Arial, sans-serif; /* Wybór czcionki */
+    display: flex;
+    justify-content: center; /* Wyrównanie na środku */
+    align-items: center; /* Wyrównanie na środku */
+    height: 100vh; /* Wysokość okna widoku */
+  }
+
+  .browser {
+    width: 600px; /* Szerokość przeglądarki */
+    height: 400px; /* Wysokość przeglądarki */
+    background-color: #555; /* Kolor tła przeglądarki */
+    padding: 20px; /* Wypełnienie wokół przeglądarki */
+    border-radius: 10px; /* Zaokrąglenie rogów przeglądarki */
+  }
+
+  /* Dodatkowy styl dla pola wyszukiwania */
+  .browser input[type="search"] {
+    width: 200px; /* Szerokość pola */
+    padding: 10px; /* Wypełnienie wokół tekstu */
+    border-radius: 5px; /* Zaokrąglenie rogów */
+    border: none; /* Usunięcie obramowania */
+    background-color: #777; /* Kolor tła pola */
+    color: white; /* Kolor tekstu w polu */
+  }
+
+  /* Dodatkowy styl dla przycisku wyszukiwania */
+  .browser input[type="submit"] {
+    padding: 10px 20px; /* Wypełnienie przycisku */
+    border: none; /* Usunięcie obramowania */
+    border-radius: 5px; /* Zaokrąglenie rogów */
+    background-color: #007bff; /* Kolor tła przycisku */
+    color: white; /* Kolor tekstu w przycisku */
+    cursor: pointer; /* Zmiana kursora na wskaźnik */
+  }
+
+  /* Styl przycisku po najechaniu myszką */
+  .browser input[type="submit"]:hover {
+    background-color: #0056b3; /* Zmiana koloru tła po najechaniu */
+  }
+
+  /* Styl dla komunikatu o AdBlocku */
+  .adblock-warning {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px; /* Odstęp od góry */
+  }
+</style>
+</head>
+<body>
+  <div class="browser">
+    <h1>Witaj w Bartoszbrowser!</h1>
+    <p>Kliknij przycisk, aby zezwolić na powiadomienia od tej strony.</p>
+    <button onclick="requestNotificationPermission()">Zezwól na powiadomienia</button>
+    <form action="#">
+      <input type="search" placeholder="Search in Bartoszbrowser">
+      <input type="submit" value="Search">
+    </form>
+    <p>To jest testowa strona dla przeglądarki Bartoszbrowser.</p>
+  </div>
+
+  <!-- Reklamy Google Ads -->
+  <div>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Bartoszbrowser Ads -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1234567890"
+         data-ad-slot="9876543210"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <!-- JavaScript dla powiadomień i AdBlocka -->
+  <script>
+    function requestNotificationPermission() {
+      Notification.requestPermission().then(function(permission) {
+        if (permission === "granted") {
+          showWelcomeNotification();
+        }
+      });
+    }
+
+    function showWelcomeNotification() {
+      new Notification("Welcome To Bartoszbrowser!", {
+        body: "Dziękujemy za zezwolenie na otrzymywanie powiadomień od naszej strony."
+      });
+    }
+
+    // Sprawdzenie, czy AdBlock jest włączony
+    if (typeof blockAdBlock === 'undefined') {
+      document.write('<div class="adblock-warning">Mamy pieniądze za pomocą reklam, prosimy wyłącz AdBlocka.</div>');
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/blockadblock/blockadblock.js"></script>
+</body>
+  </html>
+  
