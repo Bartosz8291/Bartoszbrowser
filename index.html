@@ -55,6 +55,11 @@
     text-align: center;
     margin-top: 20px; /* Odstęp od góry */
   }
+
+  /* Styl dla przycisku "Wyślij powiadomienie" */
+  .send-notification-btn {
+    margin-top: 20px; /* Odstęp od góry */
+  }
 </style>
 </head>
 <body>
@@ -67,6 +72,9 @@
       <input type="submit" value="Search">
     </form>
     <p>To jest testowa strona dla przeglądarki Bartoszbrowser.</p>
+
+    <!-- Przycisk do wysyłania powiadomienia -->
+    <button class="send-notification-btn" onclick="sendNotification()">Wyślij powiadomienie</button>
   </div>
 
   <!-- Reklamy Google Ads -->
@@ -100,6 +108,13 @@
       });
     }
 
+    // Funkcja do wysyłania powiadomienia
+    function sendNotification() {
+      new Notification("Welcome To Bartoszbrowser!", {
+        body: "To jest testowe powiadomienie wysłane po kliknięciu przycisku."
+      });
+    }
+
     // Sprawdzenie, czy AdBlock jest włączony
     if (typeof blockAdBlock === 'undefined') {
       document.write('<div class="adblock-warning">Mamy pieniądze za pomocą reklam, prosimy wyłącz AdBlocka.</div>');
@@ -107,5 +122,4 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/blockadblock/blockadblock.js"></script>
 </body>
-  </html>
-  
+</html>
